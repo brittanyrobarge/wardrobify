@@ -18,15 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
+from projects.views import list_projects
 
 
 
-def redirect_to_projects(request):
-    return redirect("projects:list_projects")
+
+def redirect_to_home(request):
+    return redirect("home")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', list_projects, name="list_projects"),
     path("projects/", include('projects.urls')),
     path("accounts/", include("accounts.urls")),
-    path("", redirect_to_projects, name= "home"),
+    path("", redirect_to_home, name= "home"),
 ]
