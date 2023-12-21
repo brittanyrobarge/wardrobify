@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
-from projects.views import list_projects, show_project
+from projects.views import create_project, list_projects, show_project
 
 
 
@@ -33,4 +33,5 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("", redirect_to_home, name= "home"),
     path('<int:id>/', show_project, name='show_project'),
+    path("projects/create/", create_project, name="create_project"),
 ]
