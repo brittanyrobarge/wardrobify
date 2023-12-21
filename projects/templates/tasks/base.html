@@ -6,21 +6,21 @@
     <title>Project</title>
 </head>
 <body>
+    {% comment %}
     <header>
         <nav>
             <ul>
-                {% comment %} {% if user.is_authenticated %}
-                Hello, {{user.username}}
+                {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'logout' %}" >Logout</a>
-                    <a href="{% url 'create_account' %}" >Create Accounts</a>
-                    <a href="{% url 'create_category' %}" >Create Expense Category</a>
-                    <a href="{% url 'create_receipt' %}" >Creat Receipts</a>
+                    <a href="{% url 'show_my_tasks' %}" >My Tasks</a>
+                    <a href="{% url 'list_projects' %}" >My projects</a>
                 </li>
                 <li>
                     {% else %}
                 </li>
                 <li>
+                    <a href="{% url 'signup' %}" >Signup</a>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
                 {% endif %} {% endcomment %}

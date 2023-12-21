@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Projects</title>
 </head>
 <body>
     <main>
         <div>
     <h1>My Projects</h1>
-    {% if projects %}
+    {% if not projects %}
+        <p>You are not assigned to any projects</p>
+    {% else %}
         <table>
             <thead>
                 <tr>
@@ -19,15 +21,17 @@
             </thead>
             <tbody>
                 {% for project in projects %}
-        <tr>
-            <td>{{ project.name }} </td>
-            <td>0</td>
-        </tr>
-        {% endfor %}
+                <tr>
+                    <td>
+                        <a href="{% url 'show_project' project.id %}"> {{project.name }}</a>
+                    </td>
+                    <td>
+                        {{ project.tasks.count }}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-    {% else %}
-        <p>You are not assigned to any projects</p>
     {% endif %}
         </div>
     </main>
