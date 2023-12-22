@@ -34,4 +34,5 @@ urlpatterns = [
     path("", redirect_to_home, name= "home"),
     path('<int:id>/', show_project, name='show_project'),
     path("projects/create/", create_project, name="create_project"),
+    path("tasks/", include('tasks.urls'))
 ]
