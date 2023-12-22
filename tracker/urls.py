@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.shortcuts import redirect
 
 from projects.views import create_project, list_projects, show_project
-from tasks.views import list_tasks
+from tasks.views import create_task, list_tasks
 
 
 
@@ -36,5 +36,6 @@ urlpatterns = [
     path('<int:id>/', show_project, name='show_project'),
     path("projects/create/", create_project, name="create_project"),
     path("tasks/", include('tasks.urls')),
+    path("tasks/create/", create_task, name="create_task"),
     path('tasks/mine/', list_tasks, name='show_my_tasks')
 ]

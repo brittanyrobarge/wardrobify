@@ -20,15 +20,10 @@
             </ul>
         </nav>
     </header>
-        <main>
-            <div>
-                <h1>Create a new project</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ project_form.as_table}}
-                    <button>Create</button>
-                </form>
-            </div>
-        </main>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>
