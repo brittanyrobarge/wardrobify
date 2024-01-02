@@ -59,6 +59,18 @@ class FeatureTests(TestCase):
             ):
                 has_tasks = True
         self.assertTrue(
+            has_logout, msg="Could not find a logout",
+        )
+
+        self.assertTrue(
+            has_projects, msg="Could not find a projects",
+        )
+        # self.assertTrue(
+        #     has_tasks, msg="Could not find a aaaaa",
+        # )
+
+
+        self.assertTrue(
             has_logout and has_projects and has_tasks,
             msg="Could not find a logout, projects, and tasks link for a logged in user",  # noqa: E501
         )

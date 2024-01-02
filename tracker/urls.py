@@ -17,25 +17,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from accounts.views import user_login, user_logout, user_signup
 
 from projects.views import create_project, list_projects, show_project
 from tasks.views import create_task, list_tasks
 
 
-
-
 def redirect_to_home(request):
     return redirect("home")
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', list_projects, name="list_projects"),
-    path("projects/", include('projects.urls')),
+    path("login/", user_login, name="login"),
+    path("logout/", user_logout, name="logout"),
+    path("signup/", user_signup, name="signup"),
+    path("", list_projects, name="list_projects"),
+    path("projects/", include("projects.urls")),
     path("accounts/", include("accounts.urls")),
-    path("", redirect_to_home, name= "home"),
-    path('<int:id>/', show_project, name='show_project'),
+    path("", redirect_to_home, name="home"),
+    path("<int:id>/", show_project, name="show_project"),
     path("projects/create/", create_project, name="create_project"),
-    path("tasks/", include('tasks.urls')),
+    # path("tasks/", include("tasks.urls")),
     path("tasks/create/", create_task, name="create_task"),
-    path('tasks/mine/', list_tasks, name='show_my_tasks')
+    path("tasks/mine/", list_tasks, name="show_my_tasks"),
 ]

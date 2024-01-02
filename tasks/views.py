@@ -17,6 +17,7 @@ def create_task(request):
         form = TaskForm()
     return render(request, "tasks/create_task.html", {"form": form})
 
+
 @login_required
 def list_tasks(request):
     tasks = Task.objects.filter(assignee=request.user)
