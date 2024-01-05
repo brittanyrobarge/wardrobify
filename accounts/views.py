@@ -45,7 +45,7 @@ def user_signup(request):
             if password == confirmation:
                 user = User.objects.create_user(username, password=password)
                 login(request, user)
-                return redirect("home")
+                return redirect("list_projects")
             if user is not None:
                 login(request, user)
                 return redirect("home")
